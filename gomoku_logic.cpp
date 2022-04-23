@@ -8,17 +8,17 @@ extern "C" int find_winner(int last_player, int last_move[2], int field_info[YSI
 {
 	
 	// vertical
-	int x = last_move[0];
-	int y = last_move[1] - 4;
+	const int x = last_move[0];
+	const int y = last_move[1] - 4;
 
 	int player_id = 0;
 	int line_length = 0;
 
-	for (int i = 0; i < 8; ++i)
+	for (int i = 0; i < 9; ++i)
 	{
-		if (y < 0) continue;
+		if ((y+i) < 0) continue;
 
-		int cell = field_info[y*YSIZE + x];
+		int cell = field_info[(y+i)*YSIZE + x];
 
 		if (cell != 0) {
 			if (cell == player_id) line_length++;
@@ -31,9 +31,7 @@ extern "C" int find_winner(int last_player, int last_move[2], int field_info[YSI
 			line_length = 0;
 		}
 		
-		y++;
-		
-		if (y >= YSIZE || line_length == 5) break;
+		if ((y+i) >= YSIZE || line_length == 5) break;
 	}
 
 	if (line_length==5)
