@@ -1,10 +1,12 @@
 
-// returns identifier of winner
-// field_info has YSIZE*XSIZE size
-extern "C" int find_winner(int last_player, int last_move[2], int field_info[225])
-{
-	const int YSIZE = 15;
+const int XSIZE = 15;
+const int YSIZE = 15;
 
+
+// returns identifier of winner
+extern "C" int find_winner(int last_player, int last_move[2], int field_info[YSIZE*XSIZE])
+{
+	
 	// vertical
 	int x = last_move[0];
 	int y = last_move[1] - 4;
@@ -34,7 +36,10 @@ extern "C" int find_winner(int last_player, int last_move[2], int field_info[225
 		if (y >= YSIZE || line_length == 5) break;
 	}
 
-	return player_id;
+	if (line_length==5)
+		return player_id;
+	else
+		return 0;
 
 	// horizontal
 	// main diagonal
