@@ -58,7 +58,7 @@ acting_side.place(x=12.5+25*(XSIZE-1), y=10+25*YSIZE, width=15, height=15)
 while 1:
 	c_last_move = (c_int * 2)(*last_move)
 	c_field_info = (c_int * field_size)(*field_info)
-	winner = g_logic.find_winner(last_player, c_last_move, c_field_info)
+	winner = g_logic.find_winner(c_last_move, c_field_info)
 
 	if winner==1:
 		canvas.create_text(165, 400, text='Green Victory',font=('Courier',15))

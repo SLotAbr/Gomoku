@@ -142,7 +142,7 @@ extern "C" int secondary_diagonal_check(int last_move[2], int field_info[YSIZE*X
 		return 0;
 }
 
-extern "C" int find_winner(int last_player, int last_move[2], int field_info[YSIZE*XSIZE])
+extern "C" int find_winner(int last_move[2], int field_info[YSIZE*XSIZE])
 {
 	int winner;
 	winner = vertical_check(last_move, field_info); if (winner!=0) return winner;
