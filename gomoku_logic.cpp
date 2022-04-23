@@ -17,6 +17,7 @@ extern "C" int find_winner(int last_player, int last_move[2], int field_info[YSI
 	for (int i = 0; i < 9; ++i)
 	{
 		if ((y+i) < 0) continue;
+		if ((y+i) >= YSIZE) break;
 
 		int cell = field_info[(y+i)*YSIZE + x];
 
@@ -31,7 +32,7 @@ extern "C" int find_winner(int last_player, int last_move[2], int field_info[YSI
 			line_length = 0;
 		}
 		
-		if ((y+i) >= YSIZE || line_length == 5) break;
+		if (line_length == 5) break;
 	}
 
 	if (line_length==5)
