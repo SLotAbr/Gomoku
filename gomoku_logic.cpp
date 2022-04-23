@@ -2,12 +2,8 @@
 const int XSIZE = 15;
 const int YSIZE = 15;
 
-
-// returns identifier of winner
-extern "C" int find_winner(int last_player, int last_move[2], int field_info[YSIZE*XSIZE])
+extern "C" int vertical_check(int last_move[2], int field_info[YSIZE*XSIZE])
 {
-	
-	// vertical
 	const int x = last_move[0];
 	const int y = last_move[1] - 4;
 
@@ -39,6 +35,12 @@ extern "C" int find_winner(int last_player, int last_move[2], int field_info[YSI
 		return player_id;
 	else
 		return 0;
+}
+
+extern "C" int find_winner(int last_player, int last_move[2], int field_info[YSIZE*XSIZE])
+{
+	// vertical
+	return vertical_check(last_move, field_info);
 
 	// horizontal
 	// main diagonal
